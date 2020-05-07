@@ -1,0 +1,43 @@
+I would prefer hapi on comparison of express API
+
+Please find the difference below:-
+
+Hapi vs Expres
+
+Both frameworks are solving the same basic problem Providing a convenient API for building HTTP servers in node
+
+
+basic examples :
+
+•            Create a route
+•            Run a function when the route is requested, preparing the response
+•            Respond to the request
+
+
+Express :
+
+we need to add additional functionality. If you want to read the body of an incoming request (quite a common task),
+need to install a separate module.
+Also need to check the Content-type header to check which it is and parse it accordingly (form-data vs JSON vs multi-part for example), often using separate modules.
+
+
+Hapi :
+
+It has a rich feature set, often exposed through configuration options, rather than requiring code to be written.
+
+request body is automatically  parsed based on content-type
+
+hapi includes some of the following features built-in that Express does not (as far as I know):
+
+•            Input and response validation (through Joi)
+•            Server-side caching with multiple storage options (mongo, S3, redis, riak), that can be enabled with a few lines of configuration
+•            Cookie-parsing
+•            Sessions
+•            File uploading/multipart parsing
+•            CORS support
+•            Logging
+
+Security :
+
+hapi was designed by the team at Walmart to run Black Friday traffic so security and stability have always been a top concern. For this reason the framework does a lot of things extra such as limiting incoming payload size to prevent exhausting your process memory. It also has options for things like max event loop delay, max RSS memory used and max size of the v8 heap, beyond which your server will respond with a 503 timeout rather than just crashing.
+
